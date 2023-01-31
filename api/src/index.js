@@ -19,5 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 const server = require("./app.js")
-server.listen(process.env.PORT)
-console.log(`Server on ${PORT}`)
+server.listen(process.env.PORT, ()=>{
+    console.log(`Server on port 3001`)
+})
+
