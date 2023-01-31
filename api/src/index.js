@@ -20,4 +20,4 @@
 
 const server = require("./app.js")
 server.listen(process.env.PORT)
-console.log("Server Listo!! ")
+console.log(`Server on ${PORT}`)
