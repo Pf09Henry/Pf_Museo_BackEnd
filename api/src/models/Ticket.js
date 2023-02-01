@@ -11,11 +11,11 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: false
         },
-        monto: {
+        price: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        fecha_compra: {
+        dateOfPurchase: {
             type: DataTypes.DATE,
             allowNull: false
         }

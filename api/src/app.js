@@ -5,10 +5,11 @@ const morgan = require("morgan");
 const routes = require("./routes/index.js");
 
 const server = express();
-server.use("/", routes)
 
-server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-server.use(bodyParser.json({ limit: '50mb' }));
+
+server.use(express.urlencoded({ extended: true, limit: '50mb' }));
+server.use(express.json({ limit: '50mb' }));
+server.use("/", routes)
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {

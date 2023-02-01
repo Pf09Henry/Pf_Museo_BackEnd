@@ -1,19 +1,24 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) =>{
-    sequelize.define("resenia", {
+    sequelize.define("donation", {
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        comentario: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        puntaje: {
-            type: DataTypes.INTEGER,
-            validate: {min: 1, max: 5},
+        amount: {
+            type: DataTypes.ENUM({
+                values:["500", "1000", "1500"]
+            }),
+            allowNull: false
+        },
+        donationDate: {
+            type: DataTypes.DATE,
             allowNull: false
         }
     })

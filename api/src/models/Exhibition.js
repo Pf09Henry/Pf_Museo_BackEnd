@@ -1,24 +1,26 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) =>{
-    sequelize.define("donacion", {
+    sequelize.define("exhibition", {
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name_tipo: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        monto: {
-            type: DataTypes.ENUM({
-                values:["500", "1000", "1500"]
-            }),
+        categori: {
+            type: DataTypes.ENUM("Paleontología", "Geología y Mineralogía", "Biodiversidad"),
             allowNull: false
         },
-        fecha: {
-            type: DataTypes.DATE,
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        img: {
+            type: DataTypes.STRING,
             allowNull: false
         }
     })

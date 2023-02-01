@@ -1,15 +1,15 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) =>{
-    sequelize.define("suscripcion", {
+    sequelize.define("category", {
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        email:{
+        name: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         }
     })
 }
