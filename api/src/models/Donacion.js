@@ -12,8 +12,9 @@ module.exports = (sequelize) =>{
             allowNull: false
         },
         monto: {
-            type: DataTypes.ENUM,
-            values: [500, 1000, 1500],
+            type: DataTypes.ENUM({
+                values:["500", "1000", "1500"]
+            }),
             allowNull: false
         },
         fecha: {
