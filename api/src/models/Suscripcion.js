@@ -1,15 +1,15 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) =>{
-    sequelize.define("guia", {
+    sequelize.define("suscripcion", {
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        email:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     })
 }
