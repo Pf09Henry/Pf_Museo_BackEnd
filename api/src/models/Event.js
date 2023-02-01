@@ -1,7 +1,7 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) =>{
-    sequelize.define("exhibicion", {
+    sequelize.define("event", {
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -11,15 +11,19 @@ module.exports = (sequelize) =>{
             type: DataTypes.STRING,
             allowNull: false
         },
-        categoria: {
+        startDay: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        endDay: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        img: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        descripcion: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        image: {
+        information: {
             type: DataTypes.STRING,
             allowNull: false
         }

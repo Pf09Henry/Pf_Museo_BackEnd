@@ -10,23 +10,23 @@ module.exports = (sequelize) =>{
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         phone: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        addmin: {
+        admin: {
             type: DataTypes.BOOLEAN,
-            allowNull: true
+            allowNull: false
         }
     })
 }

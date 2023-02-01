@@ -29,34 +29,34 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Ticket, Resenia, Guia, Exhibicion, Evento, Donacion, Categoria, Suscripcion } = sequelize.models;
+const { User, Ticket, Review, Guide, Exhibition, Event, Donation, Category, Subscription } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Exhibicion.belongsToMany(Evento, {
-    through: "exhibicion_evento"
+Exhibition.belongsToMany(Event, {
+    through: "exhibition_event"
 })
-Evento.belongsToMany(Exhibicion, {
-    through: "exhibicion_evento"
+Event.belongsToMany(Exhibition, {
+    through: "exhibition_event"
 })
 
-User.hasMany(Donacion)
-Donacion.belongsTo(User)
+User.hasMany(Donation)
+Donation.belongsTo(User)
 
 User.hasMany(Ticket)
 Ticket.belongsTo(User)
-User.hasMany(Resenia)
-Resenia.belongsTo(User)
+User.hasMany(Review)
+Review.belongsTo(User)
 
-Ticket.belongsTo(Evento)
-Ticket.belongsTo(Exhibicion)
+Ticket.belongsTo(Event)
+Ticket.belongsTo(Exhibition)
 
-Exhibicion.belongsTo(Categoria)
-Exhibicion.belongsTo(Guia)
-Guia.hasMany(Exhibicion)
+Exhibition.belongsTo(Category)
+Exhibition.belongsTo(Guide)
+Guide.hasMany(Exhibition)
 
-User.belongsTo(Suscripcion)
+User.belongsTo(Subscription)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
