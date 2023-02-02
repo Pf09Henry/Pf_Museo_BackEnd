@@ -40,6 +40,7 @@ User.hasMany(Donation)
 Donation.belongsTo(User)
 
 Event.belongsTo(Category)
+
 Event.hasMany(Guide)
 Guide.belongsTo(Event)
 

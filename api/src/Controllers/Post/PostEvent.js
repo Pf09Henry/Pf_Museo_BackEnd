@@ -1,12 +1,18 @@
-const {Event} = require("../../db")
+const {Event, Guide} = require("../../db")
 const { Router } = require('express');
 const router = Router();
 
 
 router.post("/post", async (req, res, next)=>{
-    const {name, inicio, fin, img, informacion, guide, category} = req.body
+    const {name, startDay, endDay, price, img, information, guide} = req.body
     try {
-        const newEvent = await Event.create({name, inicio, fin, img, informacion})
+        const newEvent = await Event.create({name, startDay, endDay, price, img, information})
+        let guideDb = await Guide.findAll({
+            where:{
+                name: guide
+            }
+        })
+        newEvent.addGuide(guideDb)
         res.status(200).send(newEvent)
     } catch (error) {
         next(error)
