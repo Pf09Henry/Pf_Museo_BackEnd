@@ -19,6 +19,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.DATE,
             allowNull: false
         },
+        price: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         img: {
             type: DataTypes.STRING,
             allowNull: false
@@ -29,3 +33,8 @@ module.exports = (sequelize) =>{
         }
     })
 }
+
+// evento como muy largo un finde. precio, añdir guia!.
+// al evento asignarle mas de un guia.
+// eventos por categoria 
+// exhibiciones se elimina

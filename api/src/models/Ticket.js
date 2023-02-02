@@ -7,17 +7,15 @@ module.exports = (sequelize) =>{
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        price: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         dateOfPurchase: {
             type: DataTypes.DATE,
+            allowNull: false
+        },
+        method: {
+            type: DataTypes.STRING,
             allowNull: false
         }
     })
 }
+
+//ver detalle de compras, veo eso, cantidad de tickes comprados
