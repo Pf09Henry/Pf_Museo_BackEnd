@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const e = require('express');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
@@ -29,20 +30,18 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Ticket, Review, Guide, Exhibition, Event, Donation, Category, Subscription } = sequelize.models;
+const { User, Ticket, Review, Guide, Event, Donation, Category, Subscription } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-Exhibition.belongsToMany(Event, {
-    through: "exhibition_event"
-})
-Event.belongsToMany(Exhibition, {
-    through: "exhibition_event"
-})
 
 User.hasMany(Donation)
 Donation.belongsTo(User)
+
+Event.belongsTo(Category)
+Event.hasMany(Guide)
+Guide.belongsTo(Event)
 
 User.hasMany(Ticket)
 Ticket.belongsTo(User)
@@ -50,11 +49,6 @@ User.hasMany(Review)
 Review.belongsTo(User)
 
 Ticket.belongsTo(Event)
-Ticket.belongsTo(Exhibition)
-
-Exhibition.belongsTo(Category)
-Exhibition.belongsTo(Guide)
-Guide.hasMany(Exhibition)
 
 User.belongsTo(Subscription)
 
