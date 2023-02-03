@@ -14,13 +14,6 @@ cloudinary.config({
     })
 }
 
-const {uploadImage} = require("../../Utils/Cloudinary");
-if(req.files?.image){
-           const result = await uploadImage(req.files.image.tempFilePath)
-        console.log(result)
-        }
-
-
 module.exports = { 
     cloudinary,
     uploadImage
