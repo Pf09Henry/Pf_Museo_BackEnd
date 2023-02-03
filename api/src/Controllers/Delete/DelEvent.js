@@ -2,9 +2,9 @@ const { Router } = require('express');
 const {Event, Guide} = require("../../db")
 const router = Router();
 
-router.delete("/delete", async (req, res, next)=>{
+router.delete("/delete/:id", async (req, res, next)=>{
     try {
-        const event = await Event.findByPk( req.body.id)
+        const event = await Event.findByPk( req.params.id)
         await event.destroy()
    
          res.status(200).send(`Evento eliminado ${event}`)

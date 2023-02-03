@@ -5,10 +5,6 @@ const router = Router();
 
 router.post("/post", async (req, res, next)=>{
 
-    const {name, startDay, endDay, price, img, information, guide} = req.body
-    
-
-
     const {name, startDay, endDay, price, img, information, guide, category} = req.body
 
     try {

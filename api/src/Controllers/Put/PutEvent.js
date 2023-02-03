@@ -2,10 +2,10 @@ const { Router } = require('express');
 const {Event} = require("../../db")
 const router = Router();
 
-router.put("/put", async (req, res, next)=>{
+router.put("/put/:id", async (req, res, next)=>{
    
     try {
-        const event = await Event.findByPk( req.body.id)// este id es el que se envia desde el front, el metodo findbyPk busca por id
+        const event = await Event.findByPk( req.params.id)// este id es el que se envia desde el front, el metodo findbyPk busca por id
         await event.update(
             {
                 name: req.body.name,

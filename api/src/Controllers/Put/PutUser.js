@@ -2,10 +2,10 @@ const { Router } = require('express');
 const {User} = require("../../db")
 const router = Router();
 
-router.put("/put", async (req, res, next)=>{
+router.put("/put/:id", async (req, res, next)=>{
    
     try {
-        const user = await User.findByPk( req.body.id)
+        const user = await User.findByPk( req.params.id)
         await user.update(
             {
                 name: req.body.name,
