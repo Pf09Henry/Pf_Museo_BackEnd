@@ -8,7 +8,7 @@ router.get("/", async (req, res, next)=>{
             include: [
                 {
                 model: Guide,
-                attributes: ['name']
+                attributes: ['name', "image"]
                 },
                 {
                 model: Category,
@@ -16,17 +16,23 @@ router.get("/", async (req, res, next)=>{
                 }
         ]
         })
-        // let evntMap = allEvent.map(e=>({
-        //     id: e.id,
-        //     startDay: e.startDay,
-        //     endDay: e.endDay,
-        //     price: e.price,
-        //     img: e.img,
-        //     information: e.information,
-        //     guide: e.guides.map(g => g.name).join(", "),
-        //     category: e.categoryId
-        // }))
-        res.send(allEvent)
+        let evntMap = allEvent.map(e=>({
+            id: e.id,
+            name: e.name,
+            startDay: e.startDay.toLocaleDateString(),
+            endDay: e.endDay.toLocaleDateString(),
+            price: e.price,
+            img: e.img,
+            information: e.information,
+            guide: e.guides.map(g =>({
+                name: g.name,
+                image: g.image
+            })),
+            category: e.categories.map(c =>({
+                name: c.name
+            }))
+        }))
+        res.send(evntMap)
     } catch (error) {
         next(error)
     }

@@ -2,6 +2,10 @@ const { Router } = require('express');
 const getAllUsers = require("../Controllers/Get/getUser")
 const getAllEvent = require("../Controllers/Get/getEvent")
 const getAllGuides = require("../Controllers/Get/getGuide")
+
+const getEventById = require("../Controllers/Get/getEventById")
+const getUserById = require("../Controllers/Get/getUserById")
+
 const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
 const postEvent = require("../Controllers/Post/PostEvent")
@@ -24,6 +28,10 @@ const router = Router();
 router.use("/users", getAllUsers)
 router.use("/events", getAllEvent)
 router.use("/guides", getAllGuides)
+
+router.use("/event", getEventById)
+router.use("/user", getUserById)
+
 router.use("/users", postUser)
 router.use("/subscription", postSubscription)
 router.use("/event", postEvent)

@@ -3,9 +3,9 @@ const { Router } = require('express');
 const router = Router();
 
 router.post("/post", async(req, res, next)=>{
-    const {name} = req.body
+    const {name, image} = req.body
     try {
-        const newGuide = await Guide.create({name})
+        const newGuide = await Guide.create({name, image})
         res.status(200).send(newGuide)
     } catch (error) {
         next(error)
