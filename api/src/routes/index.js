@@ -6,6 +6,7 @@ const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
 const postEvent = require("../Controllers/Post/PostEvent")
 const postGuide = require("../Controllers/Post/PostGuide")
+const postCategory = require("../Controllers/Post/PostCategory")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -19,6 +20,7 @@ router.use("/users", postUser)
 router.use("/subscription", postSubscription)
 router.use("/event", postEvent)
 router.use("/guide", postGuide)
+router.use("/category", postCategory)
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
