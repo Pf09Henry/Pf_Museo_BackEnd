@@ -6,15 +6,14 @@ const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
 const postEvent = require("../Controllers/Post/PostEvent")
 const postGuide = require("../Controllers/Post/PostGuide")
+const delUser = require("../Controllers/Delete/DelUser")
+const delEvent = require("../Controllers/Delete/DelEvent")
+const delGuide = require("../Controllers/Delete/DelGuide")
+const putGuide = require("../Controllers/Put/PutGuide")
+const putUser = require("../Controllers/Put/PutUser")
+const putEvent = require("../Controllers/Put/PutEvent")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
-const exhibitionsRoute = require('./exhibitions') // exhibiciones
-const eventsRoute = require('./events') // eventos
-const usersRoute = require('./users') // usuarios
-const adminsRoute = require('./admins') // administradores
-const userRoute = require('./user') // usuario
-
 
 const router = Router();
 
@@ -25,15 +24,14 @@ router.use("/users", postUser)
 router.use("/subscription", postSubscription)
 router.use("/event", postEvent)
 router.use("/guide", postGuide)
+router.use("/users", delUser)
+router.use("/events", delEvent)
+router.use("/guides", delGuide)
+router.use("/guides", putGuide)
+router.use("/users", putUser)
+router.use("/events", putEvent)
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
-router.use('/exhibitions', exhibitionsRoute); // ruta de exhibiciones
-router.use('/events', eventsRoute); // ruta de eventos
-router.use('/users', usersRoute); // ruta de usuarios
-router.use('/admins', adminsRoute); // ruta de administradores
-router.use('/user', userRoute); // ruta de usuario
-
 
 module.exports = router;
