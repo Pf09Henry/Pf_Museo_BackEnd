@@ -35,14 +35,22 @@ const { User, Ticket, Review, Guide, Event, Donation, Category, Subscription } =
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
+Event.belongsToMany(Guide, {
+  through: "event_guide"
+})
+Guide.belongsTo(Event, {
+  through: "event_guide"
+})
+
+Event.belongsToMany(Category,{
+  through: "event_category"
+})
+Category.belongsToMany(Event,{
+  through: "event_category"
+})
 
 User.hasMany(Donation)
 Donation.belongsTo(User)
-
-Event.belongsTo(Category)
-
-Event.hasMany(Guide)
-Guide.belongsTo(Event)
 
 User.hasMany(Ticket)
 Ticket.belongsTo(User)

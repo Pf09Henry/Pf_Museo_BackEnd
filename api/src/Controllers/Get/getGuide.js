@@ -5,10 +5,10 @@ const router = Router();
 router.get("/", async (req, res, next)=>{
     try {
         const allGuides = await Guide.findAll({
-            include:[{
-                model: Event,
-                attributes: ["name"]
-            }]
+            // include:[{
+            //     model: Event,
+            //     attributes: ["name"]
+            // }]
         });
         res.status(200).send(allGuides)
     } catch (error) {
