@@ -8,7 +8,7 @@ router.put("/put", async (req, res, next)=>{
         const guide = await Guide.findByPk( req.body.id)
         await guide.update(
             {
-                name: req.body.name
+                name: req.body.name,
             }
 
         )
