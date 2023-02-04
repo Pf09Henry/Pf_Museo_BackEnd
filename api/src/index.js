@@ -20,7 +20,7 @@
 
 const server = require("./app.js")
 const {conn} = require("./db.js")
-const DB_PORT = process.env.PGPORT || 3001;
+const DB_PORT = 3001;
 
 
 
