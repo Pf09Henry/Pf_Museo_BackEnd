@@ -20,9 +20,13 @@
 
 const server = require("./app.js")
 const {conn} = require("./db.js")
+const {
+    DB_PORT
+  } = process.env;
+
 
 conn.sync({force: false}).then(()=>{
-    server.listen(3001, ()=>{
+    server.listen(DB_PORT, ()=>{
         console.log(`Server on port 3001`)
     })
 })
