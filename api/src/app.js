@@ -5,29 +5,31 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const fileUpload = require("express-fileupload");
+const cors = require("cors")
+
 
 const server = express();
-
+server.use(cors())
 const { auth, requiresAuth} = require('express-openid-connect');
 
 //Config Auth
-// const config = {
-//   authRequired: false,
-//   auth0Logout: true,
-//   secret: process.env.SECRET,
-//   baseURL: process.env.BASE_URL,
-//   clientID: process.env.CLIENT_ID,
-//   issuerBaseURL: process.env.ISSUER_BASE_URL
-// };
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL
+};
 
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-// server.use(auth(config));
-// server.get('/', (req, res) => {
-//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-// });
-// server.get('/profile', requiresAuth(), (req, res) =>{
-//   res.send(JSON.stringify(req.oidc.user))
-// })
+//auth router attaches /login, /logout, and /callback routes to the baseURL
+server.use(auth(config));
+server.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+});
+server.get('/profile', requiresAuth(), (req, res) =>{
+  res.send(JSON.stringify(req.oidc.user))
+})
 
 
 
@@ -41,7 +43,7 @@ server.use("/", routes)
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
