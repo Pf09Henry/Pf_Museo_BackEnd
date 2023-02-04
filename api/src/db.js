@@ -18,7 +18,6 @@ const e = require('express');
 
 const dbConfig ={
   host: process.env.PGHOST || 'localhost',
-  port: process.env.PGPORT || '3001',
   password: process.env.PGPASSWORD || 'nikita123',
   user: process.env.PGUSER || 'postgres',
   database: process.env.PGDATABASE || 'museopf',
