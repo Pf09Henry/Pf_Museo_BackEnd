@@ -16,12 +16,20 @@ const e = require('express');
 //  });
 // const basename = path.basename(__filename);
 
+// const dbConfig ={
+//   host: process.env.PGHOST || 'localhost',
+//   port: process.env.PGPORT || '5432',
+//   password: process.env.PGPASSWORD || 'nikita123',
+//   user: process.env.PGUSER || 'postgres',
+//   database: process.env.PGDATABASE || 'museopf',
+// }
+
 const dbConfig ={
-  host: process.env.PGHOST || 'localhost',
-  port: process.env.PGPORT || '5432',
-  password: process.env.PGPASSWORD || 'nikita123',
-  user: process.env.PGUSER || 'postgres',
-  database: process.env.PGDATABASE || 'museopf',
+  host: process.env.PGHOST ,
+  port: process.env.PGPORT ,
+  password: process.env.PGPASSWORD ,
+  user: process.env.PGUSER ,
+  database: process.env.PGDATABASE ,
 }
 
 const sequelize = new Sequelize(`postgresql://${dbConfig.user}:${ dbConfig.password}@${ dbConfig.host }:${ dbConfig.port }/${ dbConfig.database }`, {
