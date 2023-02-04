@@ -20,7 +20,8 @@
 
 const server = require("./app.js")
 const {conn} = require("./db.js")
-const DB_PORT = process.env.PORT || 4000;
+const DB_PORT = process.env.PGPORT || 3001;
+
 
 
 conn.sync({force: false}).then(()=>{
