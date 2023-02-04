@@ -20,8 +20,6 @@
 
 const server = require("./app.js")
 const {conn} = require("./db.js")
-const DB_PORT = 3001;
-
 
 
 conn.sync({force: false}).then(()=>{
