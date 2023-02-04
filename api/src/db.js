@@ -18,12 +18,13 @@ const e = require('express');
 
 const dbConfig ={
   host: process.env.PGHOST || 'localhost',
+  port: process.env.PGPORT || '5432',
   password: process.env.PGPASSWORD || 'nikita123',
   user: process.env.PGUSER || 'postgres',
   database: process.env.PGDATABASE || 'museopf',
 }
 
-const sequelize = new Sequelize(`postgresql://${dbConfig.user}:${ dbConfig.password}@${ dbConfig.host }/${ dbConfig.database }`, {
+const sequelize = new Sequelize(`postgresql://${dbConfig.user}:${ dbConfig.password}@${ dbConfig.host }:${ dbConfig.port }/${ dbConfig.database }`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
