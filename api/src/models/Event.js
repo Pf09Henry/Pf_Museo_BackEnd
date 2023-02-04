@@ -30,6 +30,10 @@ module.exports = (sequelize) =>{
         information: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: null
         }
     })
 }
