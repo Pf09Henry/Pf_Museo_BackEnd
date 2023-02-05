@@ -21,6 +21,8 @@
     "express-openid-connect": "^2.12.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
+    "node": "^16.13.0",
+    "npm": "^7.24.2",
     "pg": "^8.9.0",
     "sequelize": "^6.28.0"
   }
