@@ -7,26 +7,11 @@ const e = require('express');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOYD
 } = process.env;
-// const {
-//   PGDATABASE,
-// PGHOST,
-// PGPASSWORD,
-// PGPORT,
-// PGUSER,
-// } = process.env;
-//  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/museopf`, {
-//    logging: false, // set to console.log to see the raw SQL queries
-//    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//  });
-// const basename = path.basename(__filename);
 
-// const dbConfig ={
-//   host: process.env.PGHOST || 'localhost',
-//   port: process.env.PGPORT || '5432',
-//   password: process.env.PGPASSWORD || 'nikita123',
-//   user: process.env.PGUSER || 'postgres',
-//   database: process.env.PGDATABASE || 'museopf',
-// }
+const sequelize = new Sequelize(DB_DEPLOYD, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
 
 const dbConfig ={
   host: process.env.PGHOST ,
@@ -36,10 +21,7 @@ const dbConfig ={
   database: process.env.PGDATABASE ,
 }
 
-const sequelize = new Sequelize(DB_DEPLOYD, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
