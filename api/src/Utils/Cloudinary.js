@@ -8,6 +8,7 @@ cloudinary.config({
     secure: true
 });
 
+
   async function uploadImage (filePath){
     return await cloudinary.uploader.upload(filePath,{
         folder: 'Users'
