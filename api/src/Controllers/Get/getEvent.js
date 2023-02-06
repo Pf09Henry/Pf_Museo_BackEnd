@@ -19,8 +19,8 @@ router.get("/", async (req, res, next)=>{
         let evntMap = allEvent.map(e=>({
             id: e.id,
             name: e.name,
-            startDay: e.startDay.toLocaleDateString(),
-            endDay: e.endDay.toLocaleDateString(),
+            startDay: e.startDay,
+            endDay: e.endDay,
             price: e.price,
             img: e.img,
             information: e.information,
