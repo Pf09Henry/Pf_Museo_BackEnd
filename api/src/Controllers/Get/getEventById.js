@@ -27,8 +27,8 @@ router.get("/:id", async (req, res, next)=>{
             let eventId = arrayEventId.map(event =>({
                 id: event.id,
                 name: event.name,
-                startDay: event.startDay.toLocaleDateString(),
-                endDay: event.endDay.toLocaleDateString(),
+                startDay: event.startDay,
+                endDay: event.endDay,
                 price: event.price,
                 img: event.img,
                 status: event.status,
