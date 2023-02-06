@@ -19,6 +19,7 @@ const putUser = require("../Controllers/Put/PutUser")
 const putEvent = require("../Controllers/Put/PutEvent")
 
 const postCategory = require("../Controllers/Post/PostCategory")
+const getCategory= require("../Controllers/Get/getCategory")
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -45,6 +46,7 @@ router.use("/users", putUser)
 router.use("/events", putEvent)
 
 router.use("/category", postCategory)
+router.use("/category", getCategory)
 
 
 // Configurar los routers
