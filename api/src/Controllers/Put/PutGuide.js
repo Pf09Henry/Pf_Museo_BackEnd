@@ -17,7 +17,11 @@ router.put("/put/:id", async (req, res, next) => {
     const guide = await Guide.findByPk(req.params.id);
 
     if (guide) {
-      await guide.update({ name: req.body.name });
+      await guide.update({ 
+        name: req.body.name, 
+        image: req.body.image,
+        status: req.body.status
+      });
 
       res.status(200).send(`Guia actualizado ${JSON.stringify(guide)}`);
     } else {

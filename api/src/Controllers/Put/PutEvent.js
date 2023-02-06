@@ -41,7 +41,8 @@ router.put("/put/:id", async (req, res, next) => {
                     price: req.body.price,
                     img: req.body.img,
                     information: req.body.information,
-                    guide: req.body.guide
+                    guide: req.body.guide,
+                    status: req.body.status
                 }
             );
 

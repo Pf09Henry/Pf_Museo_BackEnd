@@ -23,6 +23,7 @@ router.get("/", async (req, res, next)=>{
             endDay: e.endDay.toLocaleDateString(),
             price: e.price,
             img: e.img,
+            status:e.status,
             information: e.information,
             guide: e.guides.map(g =>({
                 name: g.name,

@@ -31,6 +31,7 @@ router.get("/:id", async (req, res, next)=>{
                 endDay: event.endDay.toLocaleDateString(),
                 price: event.price,
                 img: event.img,
+                status: event.status,
                 information: event.information,
                 guide: event.guides.map(g =>({
                     name: g.name,
