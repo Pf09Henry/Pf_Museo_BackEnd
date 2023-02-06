@@ -23,7 +23,7 @@ server.use(cors())
 // };
 
 // //auth router attaches /login, /logout, and /callback routes to the baseURL
-// server.use(auth(config));
+// server.use(auth(config)); /Login /logout
 // server.get('/', (req, res) => {
 //   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 // });

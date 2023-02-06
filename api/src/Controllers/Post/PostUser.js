@@ -4,13 +4,13 @@ const router = Router();
 
 
 router.post("/post", async (req, res, next)=>{
-    const {name, email, password, phone, admin, status} = req.body
+    const {name, email,image, password, phone, admin, status} = req.body
     const emailSubs = await Subscription.findAll({
         where: {email: email}
     })
     console.log(emailSubs)
     try {
-        const newUser = await User.create({name, email, password, phone, admin, status})
+        const newUser = await User.create({name,image, email, password, phone, admin, status})
         res.status(200).send(newUser)
     } catch (error) {
         next(error)

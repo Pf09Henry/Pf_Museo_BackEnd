@@ -39,9 +39,11 @@ router.put("/put/:id", async (req, res, next) => {
         await user.update({
             name: req.body.name,
             email: req.body.email,
+            image: req.body.image,
             password: req.body.password,
             phone: req.body.phone,
             admin: req.body.admin,
+            status: req.body.status
           });
       
           res.status(200).send(`Usuario actualizado ${JSON.stringify(user)}`);
