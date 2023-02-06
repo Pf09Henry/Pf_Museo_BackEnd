@@ -12,7 +12,7 @@ router.post("/post", async (req, res, next)=>{
         // if(!req.files?.img){
         //     const result = await uploadImage(req.files.img.tempFilePath)
         //     const img = result.secure_url
-            const newEvent = await Event.create({name, startDay, endDay, price, img, information, status})
+            const newEvent = await Event.create({name, startDay, endDay, price, img, information,guide,category, status})
             let guideDb = await Guide.findAll({
                 where:{
                     name: guide
