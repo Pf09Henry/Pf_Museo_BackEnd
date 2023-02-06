@@ -13,13 +13,11 @@ module.exports = (sequelize) =>{
             allowNull: false
         },
         amount: {
-            type: DataTypes.ENUM({
-                values:["500", "1000", "1500"]
-            }),
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         donationDate: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false
         }
     })
