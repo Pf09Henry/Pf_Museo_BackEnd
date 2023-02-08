@@ -9,6 +9,7 @@ router.post("/post", async (req, res, next)=>{
     const {name, startDay, endDay, price, img, information, guide, category, status} = req.body
     
     try {
+        console.log("david");
         // if(!req.files?.img){
         //     const result = await uploadImage(req.files.img.tempFilePath)
         //     const img = result.secure_url
