@@ -1,17 +1,19 @@
 const { Router } = require("express");
 const { User } = require("../../db");
 const router = Router();
+const {uploadImage} = require("../../Utils/Cloudinary");
+
 
 router.put("/put/:id", async (req, res, next) => {
   try {
+    
     var ExpRegSoloNumeros = "^[0-9]+$";
     var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
     var phoneRegex = /^[0-9]{10}$/;
 
-    if (req.params.id.match(ExpRegSoloNumeros) === null) {
-      res.status(404).send("El id debe ser un numero");
-    }
+   
+    
 
     if (!req.body.name || String(req.body.name).match(ExpRegSoloNumeros) !== null){
         res.status(404).send("El nombre es requerido y no puede ser un numero");
@@ -29,24 +31,30 @@ router.put("/put/:id", async (req, res, next) => {
         res.status(404).send("El telefono es requerido y debe tener 10 digitos");
     }
 
-    if ( req.body.admin === "true" || req.body.admin === "false"){
+    if ( req.body.admin === true || req.body.admin === false){
             res.status(404).send("El admin es requerido y debe ser un booleano");
         }
 
     const user = await User.findByPk(req.params.id);
 
     if (user) {
+      if(req.files.image){
+        const result = await uploadImage(req.files.image.tempFilePath)
+        const image = result
         await user.update({
-            name: req.body.name,
-            email: req.body.email,
-            image: req.body.image,
-            password: req.body.password,
-            phone: req.body.phone,
-            admin: req.body.admin,
-            status: req.body.status
-          });
-      
-          res.status(200).send(`Usuario actualizado ${JSON.stringify(user)}`);
+          name: req.body.name,
+          email: req.body.email,
+          image: image,
+          password: req.body.password,
+          phone: req.body.phone,
+          admin: req.body.admin,
+          status: req.body.status
+        });
+    
+        res.status(200).send(`Usuario actualizado ${JSON.stringify(user)}`);
+       
+   }
+       
       } else {
         res.status(404).send("No se encontro el usuario con el id especificado.");
       }

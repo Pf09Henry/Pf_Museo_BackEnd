@@ -1,29 +1,34 @@
 const { Router } = require("express");
 const { Guide } = require("../../db");
 const router = Router();
+const {uploadImage} = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   try {
     var ExpRegSoloNumeros = "^[0-9]+$";
 
-    if (req.params.id.match(ExpRegSoloNumeros) === null) {
-      res.status(404).send("El id debe ser un numero");
-    }
+    
 
-    if (!req.body.name || String(req.body.name).match(ExpRegSoloNumeros) !== null) {
+    if (
+      !req.body.name ||
+      String(req.body.name).match(ExpRegSoloNumeros) !== null
+    ) {
       res.status(404).send("El nombre es requerido y no puede ser un numero");
     }
 
     const guide = await Guide.findByPk(req.params.id);
 
     if (guide) {
-      await guide.update({ 
-        name: req.body.name, 
-        image: req.body.image,
-        status: req.body.status
-      });
-
-      res.status(200).send(`Guia actualizado ${JSON.stringify(guide)}`);
+      if (req.files.image) {
+        const result = await uploadImage(req.files.image.tempFilePath);
+        const image = result;
+        await guide.update({
+          name: req.body.name,
+          image: image,
+          status: req.body.status,
+        });
+        res.status(200).send(`Guia actualizado ${JSON.stringify(guide)}`);
+      }
     } else {
       res.status(404).send("No se encontro el guia con el id especificado.");
     }
