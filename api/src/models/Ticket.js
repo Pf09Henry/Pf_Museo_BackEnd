@@ -9,7 +9,7 @@ module.exports = (sequelize) =>{
             primaryKey : true
         },
         dateOfPurchase: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false
         },
         method: {

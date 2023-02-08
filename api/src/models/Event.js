@@ -26,16 +26,15 @@ module.exports = (sequelize) =>{
             allowNull: false
         },
         img: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT("long"),
             allowNull: false
         },
         information: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT("long"),
             allowNull: false
         },
        status: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
+            type: DataTypes.BOOLEAN
         } 
     })
 }

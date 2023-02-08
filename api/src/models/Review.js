@@ -9,7 +9,7 @@ module.exports = (sequelize) =>{
             primaryKey : true
         },
         commentary: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT('long'),
             allowNull: false
         },
         score: {
@@ -18,8 +18,7 @@ module.exports = (sequelize) =>{
             allowNull: false
         },
         status: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
+            type: DataTypes.BOOLEAN
         }
     })
 }
