@@ -9,11 +9,16 @@ cloudinary.config({
 });
 
 
-  async function uploadImage (filePath){
-    return await cloudinary.uploader.upload(filePath,{
-        folder: 'Users'
-    })
+
+async function uploadImage (filePath){
+    try{
+        const res =  await cloudinary.uploader.upload(filePath,{folder: "User"})
+        return res.secure_url
+    } catch(err){
+        console.log(err);
+    }
 }
+
 
 module.exports = { 
     cloudinary,

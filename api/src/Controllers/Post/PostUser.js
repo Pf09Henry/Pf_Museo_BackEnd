@@ -1,18 +1,25 @@
-const {User, Subscription} = require("../../db")
+const {User} = require("../../db")
 const { Router } = require('express');
 const router = Router();
+const {uploadImage} = require("../../Utils/Cloudinary");
+
 
 
 router.post("/post", async (req, res, next)=>{
     const {name, email,image, password, phone, admin, status} = req.body
-    const emailSubs = await Subscription.findAll({
-        where: {email: email}
-    })
-    console.log(emailSubs)
+    //const emailSubs = await Subscription.findAll({
+      //  where: {email: email}
+    //})
+    
     try {
-        const newUser = await User.create({name,image, email, password, phone, admin, status})
-        res.status(200).send(newUser)
-    } catch (error) {
+        if(req.files.image){
+            const result = await uploadImage(req.files.image.tempFilePath)
+            const image = result
+            const newUser = await User.create({name,image, email, password, phone, admin, status})
+            res.status(200).send(newUser)
+       }
+   
+        } catch (error) {
         next(error)
         res.status(500)
     }
