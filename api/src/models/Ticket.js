@@ -8,14 +8,23 @@ module.exports = (sequelize) =>{
             allowNull: false,
             primaryKey : true
         },
-        dateOfPurchase: {
+        amount: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        totalOfPurchase: {
+            type: DataTypes.FLOAT,
+            allowNull: false
+        },
+        methodOfPurchase: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        method: {
-            type: DataTypes.STRING,
+        status: {
+            type: DataTypes.BOOLEAN,
             allowNull: false
-        }
+        },
+
     })
 }
 

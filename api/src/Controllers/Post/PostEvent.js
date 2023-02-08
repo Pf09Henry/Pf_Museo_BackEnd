@@ -16,6 +16,7 @@ router.post("/post", async (req, res, next) => {
     status,
   } = req.body;
 
+
   try {
     if (req.files.img) {
       const result = await uploadImage(req.files.img.tempFilePath);
@@ -45,6 +46,7 @@ router.post("/post", async (req, res, next) => {
       newEvent.addGuide(guideDb);
       res.status(200).send(newEvent);
     }
+
   } catch (error) {
     next(error);
     res.status(500);
