@@ -7,7 +7,7 @@ router.delete("/delete/:id", async (req, res, next) => {
         const { id } = req.params;
         const review = await Review.findByPk({ id });
         if (!review) {
-            res.status(404).send("No se encontro el ticket");
+            res.status(404).send("No se encontro el Comentario");
         } else {
             await review.update({
                 status: false
