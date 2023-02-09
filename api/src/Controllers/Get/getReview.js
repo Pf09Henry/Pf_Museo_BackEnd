@@ -1,15 +1,21 @@
 const { Router } = require('express');
-const { Review, User } = require("../../db")
+const { Review, User, Event } = require("../../db")
 const router = Router();
 
 
 router.get("/", async (req, res, next) => {
     try {
         const allReview = await Review.findAll({
-            include: [{
-                model: User,
-                attributes: ['name', 'image']
-            }],
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'image']
+                },
+                {
+                    model: Event,
+                    attributes: ['name', 'img']
+                }
+            ],
             where: { status: true }
         });
         res.status(200).send(allReview)
