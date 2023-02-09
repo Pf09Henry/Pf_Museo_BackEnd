@@ -4,9 +4,10 @@ const router = Router();
 const {uploadImage} = require("../../Utils/Cloudinary");
 
 router.post("/post", async(req, res, next)=>{
-    const {name, image, status} = req.body
+    const {name, image} = req.body
     try {
         if(req.files.image){
+            const status = true
             const result = await uploadImage(req.files.image.tempFilePath)
             const image = result
             const newGuide = await Guide.create({name, image, status})

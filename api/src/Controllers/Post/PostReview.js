@@ -4,9 +4,10 @@ const router = Router();
 
 router.post("/post", async (req, res, next) => {
 
-    const { commentary, score, status } = req.body
+    const { commentary, score } = req.body
 
     try {
+        const status = true
         const review = await Review.create({ 
             commentary, 
             score, 

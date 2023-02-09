@@ -15,6 +15,9 @@ router.get("/", async (req, res, next) => {
                     attributes: ["name"]
                 }
             ],
+            attributes: {
+                exclude: ['userId', 'eventId']
+            },
             where: {
                 status: true
             }

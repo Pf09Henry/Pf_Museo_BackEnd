@@ -1,4 +1,6 @@
 const { Router } = require('express');
+
+//Get
 const getAllUsers = require("../Controllers/Get/getUser")
 const getAllEvent = require("../Controllers/Get/getEvent")
 const getAllGuides = require("../Controllers/Get/getGuide")
@@ -7,11 +9,15 @@ const getAllTicket= require("../Controllers/Get/getTicket")
 const getAllDonation = require("../Controllers/Get/getDonation")
 const getAllReview = require("../Controllers/Get/getReview")
 
+//Get By Id
 const getEventById = require("../Controllers/Get/getEventById")
 const getUserById = require("../Controllers/Get/getUserById")
 const getDonationById = require("../Controllers/Get/getDonationById")
 const getReviewById = require("../Controllers/Get/getReviewById")
+const getGuideById = require("../Controllers/Get/getGuideById")
+const getTicketById = require("../Controllers/Get/getTicketById")
 
+//Post
 const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
 const postEvent = require("../Controllers/Post/PostEvent")
@@ -21,15 +27,13 @@ const postCategory = require("../Controllers/Post/PostCategory")
 const postDonation = require("../Controllers/Post/PostDonation")
 const postReview = require("../Controllers/Post/PostReview")
 
-
+//Delete
 const delUser = require("../Controllers/Delete/DelUser")
 const delEvent = require("../Controllers/Delete/DelEvent")
 const delGuide = require("../Controllers/Delete/DelGuide")
 const delTicket = require("../Controllers/Delete/DelTicket")
 
-
-
-
+//Put
 const putGuide = require("../Controllers/Put/PutGuide")
 const putUser = require("../Controllers/Put/PutUser")
 const putEvent = require("../Controllers/Put/PutEvent")
@@ -57,6 +61,8 @@ router.use("/event", getEventById)
 router.use("/user", getUserById)
 router.use("/donation", getDonationById)
 router.use("/review", getReviewById)
+router.use("/guide", getGuideById)
+router.use("/ticket", getTicketById)
 
 //Post
 router.use("/users", postUser)

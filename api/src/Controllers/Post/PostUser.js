@@ -6,13 +6,14 @@ const {uploadImage} = require("../../Utils/Cloudinary");
 
 
 router.post("/post", async (req, res, next)=>{
-    const {name, email,image, password, phone, admin, status} = req.body
+    const {name, email,image, password, phone, admin} = req.body
     //const emailSubs = await Subscription.findAll({
       //  where: {email: email}
     //})
     
     try {
         if(req.files.image){
+            const status = true
             const result = await uploadImage(req.files.image.tempFilePath)
             const image = result
             const newUser = await User.create({name,image, email, password, phone, admin, status})
