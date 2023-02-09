@@ -14,9 +14,9 @@ router.delete("/delete/:id", async (req, res, next) => {
 
     if (!event) {
       res.status(404).send("No se encontro el evento");
-    }
-
-    await event.destroy();
+    } await event.update({
+      status: false
+  });   
 
     res.status(200).send(`Evento eliminado ${JSON.stringify(event)}`);
   } catch (error) {

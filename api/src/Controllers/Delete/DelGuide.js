@@ -14,9 +14,9 @@ router.delete("/delete/:id", async (req, res, next) => {
 
     if (!guide) {
       res.status(404).send("No se encontro el guia");
-    }
-
-    await guide.destroy();
+    }  await guide.update({
+      status: false
+  });   
 
     res.status(200).send(`Guia eliminado ${JSON.stringify(guide)}`);
   } catch (error) {

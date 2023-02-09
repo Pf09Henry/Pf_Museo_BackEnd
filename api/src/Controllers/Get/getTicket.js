@@ -1,18 +1,18 @@
 const { Router } = require('express');
-const {Ticket, Event, User} = require("../../db")
+const { Ticket, Event, User } = require("../../db")
 const router = Router();
 
-router.get("/", async (req, res, next)=>{
+router.get("/", async (req, res, next) => {
     try {
         const allTicket = await Ticket.findAll({
             include: [
                 {
-                model: Event,
-                attributes: ['name', "img"]
+                    model: Event,
+                    attributes: ['name', "img"]
                 },
                 {
-                model: User,
-                attributes: ["name"]
+                    model: User,
+                    attributes: ["name"]
                 }
             ],
             where: {
