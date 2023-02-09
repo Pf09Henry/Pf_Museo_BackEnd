@@ -18,6 +18,9 @@ router.post("/post", async (req, res, next) => {
 
 
   try {
+    if (!req.files) {
+      next(new Error("No se ha encontrado ningun archivo en la solicitud"))
+    }
     if (req.files.img) {
       const result = await uploadImage(req.files.img.tempFilePath);
       const img = result;
