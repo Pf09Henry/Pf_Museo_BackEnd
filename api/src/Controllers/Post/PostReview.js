@@ -4,14 +4,16 @@ const router = Router();
 
 router.post("/post", async (req, res, next) => {
 
-    const { commentary, score } = req.body
+    const { commentary, score, userId, eventId } = req.body
 
     try {
         const status = true
         const review = await Review.create({ 
             commentary, 
             score, 
-            status 
+            status,
+            userId,
+            eventId
         })             
             res.status(200).send(review);
         } catch (error) {

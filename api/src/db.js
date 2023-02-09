@@ -79,6 +79,7 @@ User.hasMany(Ticket)
 Ticket.belongsTo(User)
 User.hasMany(Review)
 Review.belongsTo(User)
+Review.belongsTo(Event)
 
 Ticket.belongsTo(Event)
 
