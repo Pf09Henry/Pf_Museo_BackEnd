@@ -8,6 +8,7 @@ const getAllCategory= require("../Controllers/Get/getCategory")
 const getAllTicket= require("../Controllers/Get/getTicket")
 const getAllDonation = require("../Controllers/Get/getDonation")
 const getAllReview = require("../Controllers/Get/getReview")
+const getAllSubscription = require("../Controllers/Get/getSubscription")
 
 //Get By Id
 const getEventById = require("../Controllers/Get/getEventById")
@@ -55,6 +56,7 @@ router.use("/category", getAllCategory)
 router.use("/ticket", getAllTicket)
 router.use("/donations", getAllDonation)
 router.use("/reviews", getAllReview)
+router.use("/subscription", getAllSubscription)
 
 //Get by Id
 router.use("/event", getEventById)
