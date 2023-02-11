@@ -4,11 +4,7 @@ const router = Router();
 
 router.get("/", async (req, res, next) => {
     try {
-        const allCategory = await Category.findAll({
-            where: {
-                status: true
-            }            
-        });
+        const allCategory = await Category.findAll();
         res.status(200).send(allCategory)
     } catch (error) {
         next(error)
