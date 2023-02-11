@@ -13,15 +13,24 @@ router.post("/post", async (req, res, next) => {
     information,
     guide,
     category,
+    status,
     availability
   } = req.body;
 
 
   try {
-    console.log(name);
-    // if (name === "" || !startDay || !endDay || !price || !img || !information || !guide || !category || !availability) {
-    if (name == "" || !name) {
-      console.log("probar");
+    
+    if (name == "" || !name || 
+        startDay == "" || !startDay ||
+        endDay == "" || !endDay     ||
+        price == "" || !price       ||
+        information == "" || !information ||
+        guide == "" || !guide ||
+        category == "" || !category ||
+        availability == "" || !availability)
+        
+        {
+      
       next(new Error("Hay datos incompletos"))
     }
     if (!req.files) {
