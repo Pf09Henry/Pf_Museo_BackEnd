@@ -16,13 +16,15 @@ router.post("/post", async (req, res, next) => {
             const status = true
             const result = await uploadImage(req.files.image.tempFilePath)
             const image = result
-            let role = await Role.findAll({
+            let role = await Role.findOne({
                 where: {
                     name: 'user',
                 },
             });
-            role = role.map(e => (e.id))
-            let roleId = role[0]
+            if (!role) {
+                return res.status(400).json({message: 'No se encontro el rol debe crearlo'})
+            }
+            let roleId = role.dataValues.id;
             const newUser = await User.create({ name, image, email, password, phone, status, roleId })
             res.status(200).send(newUser)
         }

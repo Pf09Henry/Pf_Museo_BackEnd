@@ -9,8 +9,7 @@ module.exports = (sequelize) =>{
             primaryKey : true
         },
         name: {
-            type: DataTypes.ENUM,
-            values: ['finance', 'super_admin', 'admin', 'content_creator', 'user', 'subscriber']
+            type: DataTypes.ENUM('finance', 'super_admin', 'admin', 'content_creator', 'user', 'subscriber')
         }
     })
 }
