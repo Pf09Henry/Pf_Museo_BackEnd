@@ -31,10 +31,6 @@ router.put("/put/:id", async (req, res, next) => {
         res.status(404).send("El telefono es requerido y debe tener 10 digitos");
     }
 
-    if ( req.body.admin === true || req.body.admin === false){
-            res.status(404).send("El admin es requerido y debe ser un booleano");
-        }
-
     const user = await User.findByPk(req.params.id);
 
     if (user) {
@@ -47,8 +43,8 @@ router.put("/put/:id", async (req, res, next) => {
           image: image,
           password: req.body.password,
           phone: req.body.phone,
-          admin: req.body.admin,
-          status: req.body.status
+          status: req.body.status,
+          roleId: req.body.roleId
         });
     
         res.status(200).send(`Usuario actualizado ${JSON.stringify(user)}`);
