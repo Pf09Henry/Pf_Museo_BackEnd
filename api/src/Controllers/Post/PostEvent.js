@@ -12,11 +12,18 @@ router.post("/post", async (req, res, next) => {
     img,
     information,
     guide,
-    category
+    category,
+    availability
   } = req.body;
 
 
   try {
+    console.log(name);
+    // if (name === "" || !startDay || !endDay || !price || !img || !information || !guide || !category || !availability) {
+    if (name == "" || !name) {
+      console.log("probar");
+      next(new Error("Hay datos incompletos"))
+    }
     if (!req.files) {
       next(new Error("No se ha encontrado ningun archivo en la solicitud"))
     }
@@ -34,6 +41,7 @@ router.post("/post", async (req, res, next) => {
         guide,
         category,
         status,
+        availability
       });
       let guideDb = await Guide.findAll({
         where: {

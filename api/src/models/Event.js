@@ -1,17 +1,16 @@
-const {DataTypes} = require("sequelize");
+const { DataTypes } = require("sequelize");
 
-module.exports = (sequelize) =>{
+module.exports = (sequelize) => {
     sequelize.define("event", {
-        id:{
-            type: DataTypes.UUID,      
-            defaultValue: DataTypes.UUIDV4,    
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             allowNull: false,
-            primaryKey : true
-
+            primaryKey: true
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            notNull: true
         },
         startDay: {
             type: DataTypes.STRING,
@@ -25,6 +24,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        availability: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         img: {
             type: DataTypes.TEXT("long"),
             allowNull: false
@@ -33,9 +36,9 @@ module.exports = (sequelize) =>{
             type: DataTypes.TEXT("long"),
             allowNull: false
         },
-       status: {
+        status: {
             type: DataTypes.BOOLEAN
-        } 
+        }
     })
 }
 
