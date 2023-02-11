@@ -9,6 +9,7 @@ const getAllTicket= require("../Controllers/Get/getTicket")
 const getAllDonation = require("../Controllers/Get/getDonation")
 const getAllReview = require("../Controllers/Get/getReview")
 const getAllSubscription = require("../Controllers/Get/getSubscription")
+const getAllRole = require("../Controllers/Get/getRole")
 
 //Get By Id
 const getEventById = require("../Controllers/Get/getEventById")
@@ -27,6 +28,7 @@ const postTicket = require("../Controllers/Post/PostTicket")
 const postCategory = require("../Controllers/Post/PostCategory")
 const postDonation = require("../Controllers/Post/PostDonation")
 const postReview = require("../Controllers/Post/PostReview")
+const postRole = require("../Controllers/Post/PostRole")
 
 //Delete
 const delUser = require("../Controllers/Delete/DelUser")
@@ -57,6 +59,7 @@ router.use("/ticket", getAllTicket)
 router.use("/donations", getAllDonation)
 router.use("/reviews", getAllReview)
 router.use("/subscription", getAllSubscription)
+router.use("/role", getAllRole)
 
 //Get by Id
 router.use("/event", getEventById)
@@ -75,6 +78,7 @@ router.use("/ticket", postTicket)
 router.use("/category", postCategory)
 router.use("/donation", postDonation)
 router.use("/review", postReview)
+router.use("/role", postRole)
 
 //Delete
 router.use("/users", delUser)

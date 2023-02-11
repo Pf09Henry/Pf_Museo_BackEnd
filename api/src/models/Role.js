@@ -9,8 +9,8 @@ module.exports = (sequelize) =>{
             primaryKey : true
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.ENUM,
+            values: ['finance', 'super_admin', 'admin', 'content_creator', 'user', 'subscriber']
         }
     })
 }
