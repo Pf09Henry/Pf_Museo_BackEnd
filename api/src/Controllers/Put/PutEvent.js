@@ -4,6 +4,17 @@ const router = Router();
 const {uploadImage} = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
+  const {
+    name,
+    startDay,
+    endDay,
+    price,
+    img,
+    information,
+    guide,
+    category,
+    availability
+  } = req.body;
   try {
     var ExpRegSoloNumeros = "^[0-9]+$";
     // var ExpRegFecha = "/^(0[1-9]|[1-2]d|3[01])(/)(0[1-9]|1[012])2(d{4})$/";
@@ -12,11 +23,22 @@ router.put("/put/:id", async (req, res, next) => {
     // console.log(vregexNaix.test(req.body.startDay));
     // console.log(Date.parse(req.body.startDay));
     // console.log(vregexNaix.test('21/10/2082'));
-
+    if ( 
+    startDay == "" || !startDay ||
+    endDay == "" || !endDay     ||
+    price == "" || !price       ||
+    information == "" || !information ||
+    guide == "" || !guide ||
+    category == "" || !category ||
+    availability == "" || !availability)
+    
+    {
+      next(new Error("Hay datos incompletos"))
+    }
     
 
     if (
-      !req.body.name ||
+      !name ||
       String(req.body.name).match(ExpRegSoloNumeros) !== null
     ) {
       return res
@@ -39,7 +61,7 @@ router.put("/put/:id", async (req, res, next) => {
       if (req.files.img) {
         const result = await uploadImage(req.files.img.tempFilePath);
         const img = result;
-        await event.update({
+          await event.update({
           name: req.body.name,
           startDay: req.body.startDay,
           endDay: req.body.endDay,
