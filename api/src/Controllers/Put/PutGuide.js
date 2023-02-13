@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Guide } = require("../../db");
 const router = Router();
-// const { uploadImage } = require("../../Utils/Cloudinary");
+const { uploadImage } = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   try {
