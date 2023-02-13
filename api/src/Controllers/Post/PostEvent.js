@@ -1,6 +1,6 @@
 const { Event, Guide, Category } = require("../../db");
 const { Router } = require("express");
-// const { uploadImage } = require("../../Utils/Cloudinary");
+const { uploadImage } = require("../../Utils/Cloudinary");
 const router = Router();
 
 router.post("/post", async (req, res, next) => {
@@ -9,7 +9,6 @@ router.post("/post", async (req, res, next) => {
     startDay,
     endDay,
     price,
-    img,
     information,
     guide,
     category,
@@ -37,8 +36,8 @@ router.post("/post", async (req, res, next) => {
     // }
     // if (req.files.img) {
       const status = true
-      // const result = await uploadImage(req.files.img.tempFilePath);
-      // const img = result;
+      const result = await uploadImage(req.body.img);
+      const img = result;
       const newEvent = await Event.create({
         name,
         startDay,
