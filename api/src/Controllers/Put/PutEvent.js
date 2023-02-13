@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Event } = require("../../db");
 const router = Router();
-// const { uploadImage } = require("../../Utils/Cloudinary");
+const { uploadImage } = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   const {
@@ -9,7 +9,6 @@ router.put("/put/:id", async (req, res, next) => {
     startDay,
     endDay,
     price,
-    img,
     information,
     guide,
     category,
@@ -49,7 +48,7 @@ router.put("/put/:id", async (req, res, next) => {
     const event = await Event.findByPk(req.params.id); // este id es el que se envia desde el front, el metodo findbyPk busca por id
     if (event) {
       // if (req.files.img) {
-      const result = await uploadImage(img);
+      const result = await uploadImage(req.body.img);
       const img = result;
       await event.update({
         name: name,
