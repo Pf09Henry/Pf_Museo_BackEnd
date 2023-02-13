@@ -35,7 +35,7 @@ router.put("/put/:id", async (req, res, next) => {
 
     if (user) {
       // if(req.files.image){
-        const result = await uploadImage(req.files.image.tempFilePath)
+        const result = await uploadImage(req.body.image)
         const image = result
         await user.update({
           name: req.body.name,
