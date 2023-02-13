@@ -18,11 +18,11 @@ router.put("/put/:id", async (req, res, next) => {
 
     if (guide) {
       // if (req.files.image) {
-      //   const result = await uploadImage(req.files.image.tempFilePath);
-      //   const image = result;
+        const result = await uploadImage(req.body.image);
+        const image = result;
         await guide.update({
           name: req.body.name,
-          image: req.body.image,
+          image: image,
           status: req.body.status,
         });
         res.status(200).send(`Guia actualizado ${JSON.stringify(guide)}`);
