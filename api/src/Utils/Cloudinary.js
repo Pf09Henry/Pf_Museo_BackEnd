@@ -10,17 +10,17 @@ cloudinary.config({
 
 
 
-async function uploadImage (filePath){
-    try{
-        const res =  await cloudinary.uploader.upload(filePath,{folder: "User"})
-        return res.secure_url
-    } catch(err){
-        console.log(err);
-    }
-}
+// async function uploadImage (filePath){
+//     try{
+//         const res =  await cloudinary.uploader.upload(filePath,{folder: "User"})
+//         return res.secure_url
+//     } catch(err){
+//         console.log(err);
+//     }
+// }
 
 
 module.exports = { 
-    cloudinary,
-    uploadImage
+    cloudinary
+    // uploadImage
 };

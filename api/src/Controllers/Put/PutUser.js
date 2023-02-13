@@ -34,13 +34,13 @@ router.put("/put/:id", async (req, res, next) => {
     const user = await User.findByPk(req.params.id);
 
     if (user) {
-      if(req.files.image){
-        const result = await uploadImage(req.files.image.tempFilePath)
-        const image = result
+      // if(req.files.image){
+        // const result = await uploadImage(req.files.image.tempFilePath)
+        // const image = result
         await user.update({
           name: req.body.name,
           email: req.body.email,
-          image: image,
+          image: req.body.image,
           password: req.body.password,
           phone: req.body.phone,
           status: req.body.status,
@@ -49,7 +49,7 @@ router.put("/put/:id", async (req, res, next) => {
     
         res.status(200).send(`Usuario actualizado ${JSON.stringify(user)}`);
        
-   }
+      // }  
        
       } else {
         res.status(404).send("No se encontro el usuario con el id especificado.");

@@ -8,28 +8,24 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOYD
 } = process.env;
 
-  const sequelize = new Sequelize(DB_DEPLOYD, {
-   logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  });
+// const sequelize = new Sequelize(DB_DEPLOYD, {
+//  logging: false, // set to console.log to see the raw SQL queries
+//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+// });
+
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/museopf`, {
+
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
 
 
-
-
-
-//  const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/museoPF`, {
-  
-//      logging: false, // set to console.log to see the raw SQL queries
-//      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//    });
-
-
-const dbConfig ={
-  host: process.env.PGHOST ,
-  port: process.env.PGPORT ,
-  password: process.env.PGPASSWORD ,
-  user: process.env.PGUSER ,
-  database: process.env.PGDATABASE ,
+const dbConfig = {
+  host: process.env.PGHOST,
+  port: process.env.PGPORT,
+  password: process.env.PGPASSWORD,
+  user: process.env.PGUSER,
+  database: process.env.PGDATABASE,
 }
 
 
@@ -62,10 +58,10 @@ Event.belongsToMany(Guide, {
   through: "event_guide"
 })
 
-Event.belongsToMany(Category,{
+Event.belongsToMany(Category, {
   through: "event_category"
 })
-Category.belongsToMany(Event,{
+Category.belongsToMany(Event, {
   through: "event_category"
 })
 

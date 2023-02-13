@@ -1,6 +1,6 @@
 const { Event, Guide, Category } = require("../../db");
 const { Router } = require("express");
-const { uploadImage } = require("../../Utils/Cloudinary");
+// const { uploadImage } = require("../../Utils/Cloudinary");
 const router = Router();
 
 router.post("/post", async (req, res, next) => {
@@ -13,7 +13,6 @@ router.post("/post", async (req, res, next) => {
     information,
     guide,
     category,
-    status,
     availability
   } = req.body;
 
@@ -33,13 +32,13 @@ router.post("/post", async (req, res, next) => {
       
       next(new Error("Hay datos incompletos"))
     }
-    if (!req.files) {
-      next(new Error("No se ha encontrado ningun archivo en la solicitud"))
-    }
-    if (req.files.img) {
+    // if (!req.files) {
+    //   next(new Error("No se ha encontrado ningun archivo en la solicitud"))
+    // }
+    // if (req.files.img) {
       const status = true
-      const result = await uploadImage(req.files.img.tempFilePath);
-      const img = result;
+      // const result = await uploadImage(req.files.img.tempFilePath);
+      // const img = result;
       const newEvent = await Event.create({
         name,
         startDay,
@@ -65,7 +64,7 @@ router.post("/post", async (req, res, next) => {
       newEvent.addCategory(catDb);
       newEvent.addGuide(guideDb);
       res.status(200).send(newEvent);
-    }
+    // }
 
   } catch (error) {
     next(error);

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Guide } = require("../../db");
 const router = Router();
-const { uploadImage } = require("../../Utils/Cloudinary");
+// const { uploadImage } = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   try {
@@ -17,16 +17,16 @@ router.put("/put/:id", async (req, res, next) => {
     const guide = await Guide.findByPk(req.params.id);
 
     if (guide) {
-      if (req.files.image) {
-        const result = await uploadImage(req.files.image.tempFilePath);
-        const image = result;
+      // if (req.files.image) {
+      //   const result = await uploadImage(req.files.image.tempFilePath);
+      //   const image = result;
         await guide.update({
           name: req.body.name,
-          image: image,
+          image: req.body.image,
           status: req.body.status,
         });
         res.status(200).send(`Guia actualizado ${JSON.stringify(guide)}`);
-      }
+      // }
     } else {
       res.status(404).send("No se encontro el guia con el id especificado.");
     }

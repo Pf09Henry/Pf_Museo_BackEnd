@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { Event } = require("../../db");
 const router = Router();
-const {uploadImage} = require("../../Utils/Cloudinary");
+// const { uploadImage } = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   const {
@@ -13,7 +13,8 @@ router.put("/put/:id", async (req, res, next) => {
     information,
     guide,
     category,
-    availability
+    availability,
+    status
   } = req.body;
   try {
     var ExpRegSoloNumeros = "^[0-9]+$";
@@ -23,19 +24,17 @@ router.put("/put/:id", async (req, res, next) => {
     // console.log(vregexNaix.test(req.body.startDay));
     // console.log(Date.parse(req.body.startDay));
     // console.log(vregexNaix.test('21/10/2082'));
-    if ( 
-    startDay == "" || !startDay ||
-    endDay == "" || !endDay     ||
-    price == "" || !price       ||
-    information == "" || !information ||
-    guide == "" || !guide ||
-    category == "" || !category ||
-    availability == "" || !availability)
-    
-    {
+    if (
+      startDay == "" || !startDay ||
+      endDay == "" || !endDay ||
+      price == "" || !price ||
+      information == "" || !information ||
+      guide == "" || !guide ||
+      category == "" || !category ||
+      availability == "" || !availability) {
       next(new Error("Hay datos incompletos"))
     }
-    
+
 
     if (
       !name ||
@@ -46,34 +45,25 @@ router.put("/put/:id", async (req, res, next) => {
         .send("El nombre es requerido y no puede ser un numero");
     }
 
-    // if (req.body.startDay.match(ExpRegFecha) === null) {
-    //     return res.status(404).send("La fecha de inicio y fin del evento son requeridas y debe tener el formato aaaa-mm-dd");
-    // }
-    // console.log(req.body.startDay);
-    // console.log(String(req.body.startDay).match(ExpRegFecha))
-    // console.log(req.body.endDay);
-    // if (req.body.startDay.match(ExpRegFecha) === null && req.body.endDay.match(ExpRegFecha) === null) {
-    //     return res.status(404).send("La fecha de inicio y fin del evento son requeridas y debe tener el formato aaaa-mm-dd");
-    // }
 
     const event = await Event.findByPk(req.params.id); // este id es el que se envia desde el front, el metodo findbyPk busca por id
     if (event) {
-      if (req.files.img) {
-        const result = await uploadImage(req.files.img.tempFilePath);
-        const img = result;
-          await event.update({
-          name: req.body.name,
-          startDay: req.body.startDay,
-          endDay: req.body.endDay,
-          price: req.body.price,
-          img: img,
-          information: req.body.information,
-          guide: req.body.guide,
-          status: req.body.status,
-        });
+      // if (req.files.img) {
+      // const result = await uploadImage(req.files.img.tempFilePath);
+      // const img = result;
+      await event.update({
+        name: name,
+        startDay: startDay,
+        endDay: endDay,
+        price: price,
+        img: img,
+        information: information,
+        guide: guide,
+        status: status,
+      });
 
-        res.status(200).send(`Evento actualizado ${JSON.stringify(event)}`);
-      }
+      res.status(200).send(`Evento actualizado ${JSON.stringify(event)}`);
+      // }
     } else {
       res.status(404).send("No se encontro el evento con el id especificado.");
     }
