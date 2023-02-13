@@ -6,9 +6,9 @@ router.delete("/delete/:id", async (req, res, next) => {
   try {
     var ExpRegSoloNumeros = "^[0-9]+$";
 
-    if (req.params.id.match(ExpRegSoloNumeros) === null) {
-      res.status(404).send("El id debe ser un numero");
-    }
+    // if (req.params.id.match(ExpRegSoloNumeros) === null) {
+    //   res.status(404).send("El id debe ser un numero");
+    // }
 
     const user = await User.findByPk(req.params.id);
 
