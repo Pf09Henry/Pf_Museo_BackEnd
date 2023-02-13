@@ -35,12 +35,12 @@ router.put("/put/:id", async (req, res, next) => {
 
     if (user) {
       // if(req.files.image){
-        // const result = await uploadImage(req.files.image.tempFilePath)
-        // const image = result
+        const result = await uploadImage(req.files.image.tempFilePath)
+        const image = result
         await user.update({
           name: req.body.name,
           email: req.body.email,
-          image: req.body.image,
+          image: image,
           password: req.body.password,
           phone: req.body.phone,
           status: req.body.status,

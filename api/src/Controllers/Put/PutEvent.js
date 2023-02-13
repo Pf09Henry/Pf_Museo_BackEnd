@@ -49,8 +49,8 @@ router.put("/put/:id", async (req, res, next) => {
     const event = await Event.findByPk(req.params.id); // este id es el que se envia desde el front, el metodo findbyPk busca por id
     if (event) {
       // if (req.files.img) {
-      // const result = await uploadImage(req.files.img.tempFilePath);
-      // const img = result;
+      const result = await uploadImage(img);
+      const img = result;
       await event.update({
         name: name,
         startDay: startDay,
