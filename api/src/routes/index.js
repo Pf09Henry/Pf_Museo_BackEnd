@@ -29,6 +29,7 @@ const postCategory = require("../Controllers/Post/PostCategory")
 const postDonation = require("../Controllers/Post/PostDonation")
 const postReview = require("../Controllers/Post/PostReview")
 const postRole = require("../Controllers/Post/PostRole")
+const postUpload = require("../Controllers/Post/PostUpload")
 
 //Delete
 const delUser = require("../Controllers/Delete/DelUser")
@@ -79,6 +80,7 @@ router.use("/category", postCategory)
 router.use("/donation", postDonation)
 router.use("/review", postReview)
 router.use("/role", postRole)
+router.use("/upload", postUpload)
 
 //Delete
 router.use("/users", delUser)

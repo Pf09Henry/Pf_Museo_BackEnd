@@ -1,7 +1,7 @@
 const { User, Role } = require("../../db")
 const { Router } = require('express');
 const router = Router();
-const { uploadImage } = require("../../Utils/Cloudinary");
+// const { uploadImage } = require("../../Utils/Cloudinary");
 
 
 
@@ -13,15 +13,16 @@ router.post("/post", async (req, res, next) => {
 
     try {
             const status = true
-            const newUser = await User.create({ name, image, email, password, phone, status })
+            let role = await Role.findOne({
+                where: {
+                    name: 'user',
+                },
+            });            
+            let roleId = role.dataValues.id
+            const newUser = await User.create({ name, image, email, password, phone, status, roleId })
             res.status(200).send(newUser)
             // const result = await uploadImage(req.files.image.tempFilePath)
             // const image = result
-            // let role = await Role.findOne({
-            //     where: {
-            //         name: 'user',
-            //     },
-            // });
     } catch (error) {
         next(error)
         res.status(500)
