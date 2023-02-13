@@ -61,9 +61,6 @@ const { User, Ticket, Review, Guide, Event, Donation, Category, Subscription, Ro
 Event.belongsToMany(Guide, {
   through: "event_guide"
 })
-// Guide.belongsTo(Event, {
-//   through: "event_guide"
-// })
 
 Event.belongsToMany(Category,{
   through: "event_category"
