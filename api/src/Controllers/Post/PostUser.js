@@ -19,10 +19,10 @@ router.post("/post", async (req, res, next) => {
                 },
             });            
             let roleId = role.dataValues.id
-            const newUser = await User.create({ name, image, email, password, phone, status, roleId })
-            res.status(200).send(newUser)
             const result = await uploadImage(req.body.image)
             const image = result
+            const newUser = await User.create({ name, image, email, password, phone, status, roleId })
+            res.status(200).send(newUser)
     } catch (error) {
         next(error)
         res.status(500)
