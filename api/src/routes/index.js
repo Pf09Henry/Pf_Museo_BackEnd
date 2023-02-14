@@ -42,6 +42,8 @@ const putUser = require("../Controllers/Put/PutUser")
 const putEvent = require("../Controllers/Put/PutEvent")
 const putTicket = require("../Controllers/Put/PutTicket")
 
+//PayPal
+// const PaypalCreate = require("../Controllers/PayPal/PaypalCreate")
 
 
 // Importar todos los routers;
@@ -93,6 +95,8 @@ router.use("/users", putUser)
 router.use("/events", putEvent)
 router.use("/tickets", putTicket)
 
+//PayPal
+// router.use("/paypal", PaypalCreate)
 
 
 
