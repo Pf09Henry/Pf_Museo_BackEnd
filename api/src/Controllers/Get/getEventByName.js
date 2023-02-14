@@ -4,24 +4,26 @@ const router = Router();
 
 router.get("/:name", async (req, res, next) => {
     const { name } = req.params
+    console.log(name);
     try {
-        
-            const eventByName = await Event.findOne({
-                where: {
-                    name: name,
-                    status: true
+
+        const eventByName = await Event.findOne({
+            where: {
+                name: name,
+                status: true
+            },
+            include: [
+                {
+                    model: Guide,
+                    attributes: ['name', "image"]
                 },
-                include: [
-                    {
-                        model: Guide,
-                        attributes: ['name', "image"]
-                    },
-                    {
-                        model: Category,
-                        attributes: ["name"]
-                    }
-                ]
-            })
+                {
+                    model: Category,
+                    attributes: ["name"]
+                }
+            ]
+        })
+        if (eventByName) {
             let arrayEventName = []
             arrayEventName.push(eventByName)
             let eventName = arrayEventName.map(event => ({
@@ -43,8 +45,12 @@ router.get("/:name", async (req, res, next) => {
                 }))
             }))
 
-            res.status(200).send(eventName)        
-        
+            res.status(200).send(eventName)
+        }else{
+            res.status(404).send("El Evento que quiere ver no existe")
+        }
+
+
     } catch (error) {
         res.status(500)
         next(error)
