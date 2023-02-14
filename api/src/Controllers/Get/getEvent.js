@@ -27,6 +27,7 @@ router.get("/", async (req, res, next) => {
             price: e.price,
             img: e.img,
             status: e.status,
+            availability: e.availability,
             information: e.information,
             guide: e.guides.map(g => ({
                 name: g.name,
