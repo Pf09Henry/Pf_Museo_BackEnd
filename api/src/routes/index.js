@@ -19,6 +19,9 @@ const getReviewById = require("../Controllers/Get/getReviewById")
 const getGuideById = require("../Controllers/Get/getGuideById")
 const getTicketById = require("../Controllers/Get/getTicketById")
 
+//Get By Name
+const getEventByName = require("../Controllers/Get/getEventByName")
+
 //Post
 const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
@@ -70,6 +73,10 @@ router.use("/donation", getDonationById)
 router.use("/review", getReviewById)
 router.use("/guide", getGuideById)
 router.use("/ticket", getTicketById)
+
+//Get by Name
+router.use("/eventname", getEventByName)
+
 
 //Post
 router.use("/users", postUser)
