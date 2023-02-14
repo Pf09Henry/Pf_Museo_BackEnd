@@ -21,6 +21,7 @@ const getTicketById = require("../Controllers/Get/getTicketById")
 
 //Get By Name
 const getEventByName = require("../Controllers/Get/getEventByName")
+const getCategoryByName = require("../Controllers/Get/getCategoryByName")
 
 //Post
 const postUser = require("../Controllers/Post/PostUser")
@@ -76,6 +77,7 @@ router.use("/ticket", getTicketById)
 
 //Get by Name
 router.use("/eventname", getEventByName)
+router.use("/categoryname", getCategoryByName)
 
 
 //Post

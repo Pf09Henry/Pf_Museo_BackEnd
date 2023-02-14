@@ -3,8 +3,7 @@ const { Event, Guide, Category } = require("../../db")
 const router = Router();
 
 router.get("/:name", async (req, res, next) => {
-    const { name } = req.params
-    console.log(name);
+    const { name } = req.params;
     try {
 
         const eventByName = await Event.findOne({
