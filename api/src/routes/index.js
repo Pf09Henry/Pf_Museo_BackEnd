@@ -19,9 +19,12 @@ const getReviewById = require("../Controllers/Get/getReviewById")
 const getGuideById = require("../Controllers/Get/getGuideById")
 const getTicketById = require("../Controllers/Get/getTicketById")
 
+
 //Get By Name
 const getEventByName = require("../Controllers/Get/getEventByName")
 const getCategoryByName = require("../Controllers/Get/getCategoryByName")
+const getGuideByName = require("../Controllers/Get/getGuideByName")
+const getUserByName = require("../Controllers/Get/getUserByName")
 
 //Post
 const postUser = require("../Controllers/Post/PostUser")
@@ -67,6 +70,7 @@ router.use("/reviews", getAllReview)
 router.use("/subscription", getAllSubscription)
 router.use("/role", getAllRole)
 
+
 //Get by Id
 router.use("/event", getEventById)
 router.use("/user", getUserById)
@@ -78,6 +82,9 @@ router.use("/ticket", getTicketById)
 //Get by Name
 router.use("/eventname", getEventByName)
 router.use("/categoryname", getCategoryByName)
+router.use("/guidename", getGuideByName)
+router.use("/username", getUserByName)
+
 
 
 //Post
