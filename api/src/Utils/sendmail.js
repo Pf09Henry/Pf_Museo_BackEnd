@@ -9,7 +9,7 @@ async function sendmail(mail,tipodemail){
           pass: "yvsbutzpqcuaslwe",
         },
       };
-     
+    
       const messageWelcome = {
         from: "pf09henry@gmail.com",
         to: mail,

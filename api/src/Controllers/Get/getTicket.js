@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
                 },
                 {
                     model: User,
-                    attributes: ["name"]
+                    attributes: ["name", "image"]
                 }
             ],
             attributes: {
