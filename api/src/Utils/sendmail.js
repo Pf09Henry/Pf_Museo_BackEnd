@@ -1,6 +1,7 @@
 const nodemailer= require ("nodemailer")
 
 function sendMail({mail, subject, message}){
+  console.log(mail, subject, message);
     const config = {
       host: "smtp.gmail.com",
       port: 587,
