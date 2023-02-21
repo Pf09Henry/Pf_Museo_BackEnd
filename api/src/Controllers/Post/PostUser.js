@@ -2,7 +2,7 @@ const { User, Role } = require("../../db")
 const { Router } = require('express');
 const router = Router();
 const { uploadImage } = require("../../Utils/Cloudinary");
-const { sendmail } = require("../../Utils/sendmail");
+const  sendMail  = require("../../Utils/sendmail");
 
 
 
@@ -23,7 +23,7 @@ router.post("/post", async (req, res, next) => {
             const result = await uploadImage(req.body.image)
             const image = result
             const newUser = await User.create({ name, image, email, password, phone, status, roleId })
-            sendmail(email, "welcome")
+            // sendMail(email, "welcome", "Mail trolo")
             res.status(200).send(newUser)
     } catch (error) {
         next(error)
