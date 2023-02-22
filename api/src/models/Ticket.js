@@ -24,6 +24,10 @@ module.exports = (sequelize) =>{
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
+        statusOfPurchase: {
+            type: DataTypes.ENUM('aprobado', 'pendiente', 'rechazado', 'cancelado'),
+            defaultValue: 'pendiente'
+        }
 
     })
 }
