@@ -9,7 +9,8 @@ router.put("/put/:id", async (req, res, next) => {
 
     if (ticket) {
         await ticket.update({            
-            status: true
+            status: true,
+            statusOfPurchase: req.body.statusOfPurchase
           });
       
           res.status(200).send(`Ticket actualizado ${JSON.stringify(ticket)}`);
