@@ -17,22 +17,17 @@ router.put("/put/:id", async (req, res, next) => {
   } = req.body;
   try {
     var ExpRegSoloNumeros = "^[0-9]+$";
-    // var ExpRegFecha = "/^(0[1-9]|[1-2]d|3[01])(/)(0[1-9]|1[012])2(d{4})$/";
-    // var fecha = "02-02-2020"
-    // var vregexNaix = /^(0[1-9]|[1-2]\d|3[01])(\/)(0[1-9]|1[012])\2(\d{4})$/;
-    // console.log(vregexNaix.test(req.body.startDay));
-    // console.log(Date.parse(req.body.startDay));
-    // console.log(vregexNaix.test('21/10/2082'));
-    if (
-      startDay == "" || !startDay ||
-      endDay == "" || !endDay ||
-      price == "" || !price ||
-      information == "" || !information ||
-      guide == "" || !guide ||
-      category == "" || !category ||
-      availability == "" || !availability) {
-      next(new Error("Hay datos incompletos"))
-    }
+
+    // if (
+    //   startDay == "" || !startDay ||
+    //   endDay == "" || !endDay ||
+    //   price == "" || !price ||
+    //   information == "" || !information ||
+    //   guide == "" || !guide ||
+    //   category == "" || !category ||
+    //   availability == "" || !availability) {
+    //   next(new Error("Hay datos incompletos"))
+    // }
 
 
     // if (
