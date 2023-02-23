@@ -35,14 +35,14 @@ router.put("/put/:id", async (req, res, next) => {
     }
 
 
-    if (
-      !name ||
-      String(req.body.name).match(ExpRegSoloNumeros) !== null
-    ) {
-      return res
-        .status(404)
-        .send("El nombre es requerido y no puede ser un numero");
-    }
+    // if (
+    //   !name ||
+    //   String(req.body.name).match(ExpRegSoloNumeros) !== null
+    // ) {
+    //   return res
+    //     .status(404)
+    //     .send("El nombre es requerido y no puede ser un numero");
+    // }
 
 
     const event = await Event.findByPk(req.params.id); // este id es el que se envia desde el front, el metodo findbyPk busca por id
@@ -59,6 +59,7 @@ router.put("/put/:id", async (req, res, next) => {
         information: information,
         guide: guide,
         status: status,
+        availability: availability
       });
 
       res.status(200).send(`Evento actualizado ${JSON.stringify(event)}`);
