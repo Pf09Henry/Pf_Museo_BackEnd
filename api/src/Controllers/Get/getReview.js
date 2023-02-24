@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name', 'image']
+                    attributes: ["name","image","email"]
                 },
                 {
                     model: Event,

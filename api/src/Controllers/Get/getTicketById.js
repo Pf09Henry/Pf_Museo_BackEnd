@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ["name"]
+                    attributes: ["name","image","email"]
                 }
             ],
             attributes: {
