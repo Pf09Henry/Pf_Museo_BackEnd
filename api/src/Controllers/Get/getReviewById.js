@@ -9,7 +9,7 @@ router.get('/:id', async (req, res) => {
       include:
       {
         model: User,
-        attributes: ['name', 'image']
+        attributes: ['name', 'image', "email"]
       },
       where: { status: true }
     });
