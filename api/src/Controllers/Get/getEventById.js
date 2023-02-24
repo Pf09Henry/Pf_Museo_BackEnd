@@ -34,6 +34,7 @@ router.get("/:id", async (req, res, next) => {
                 img: event.img,
                 status: event.status,
                 information: event.information,
+                availability: event.availability,
                 guide: event.guides.map(g => ({
                     name: g.name,
                     image: g.image
