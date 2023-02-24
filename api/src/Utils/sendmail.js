@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer")
+const { Event } = require("../db");
+
 
 function sendMail({ mail, subject, message, ticket }) {
   // console.log(mail, subject, message, ticket);
@@ -10,9 +12,18 @@ function sendMail({ mail, subject, message, ticket }) {
       pass: "yvsbutzpqcuaslwe",
     },
   };
+  console.log(ticket);
+  const event = Event.findOne({
+    where: {
+      id: ticket.event,
+      status: true
+    }
+
+  })
+  console.log(event);
   let mail_config = {}
   if (ticket != undefined) {
-    console.log(typeof ticket);
+    
     mail_config = {
       from: "pf09henry@gmail.com",
       to: `${mail}`,
@@ -41,7 +52,7 @@ function sendMail({ mail, subject, message, ticket }) {
               </h1>
             </div>`,
     }
-  }else{
+  } else {
     mail_config = {
       from: "pf09henry@gmail.com",
       to: `${mail}`,
@@ -65,7 +76,7 @@ function sendMail({ mail, subject, message, ticket }) {
             </div>`,
     }
   }
-  
+
   const transport = nodemailer.createTransport(config);
   transport.sendMail(mail_config)
 }
