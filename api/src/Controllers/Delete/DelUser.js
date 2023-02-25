@@ -15,7 +15,8 @@ router.delete("/delete/:id", async (req, res, next) => {
     if (!user) {
       res.status(404).send("No se encontro el usuario");
     } await user.update({
-      status: false
+      status: false,
+      isBanned:true
   });
 
    
