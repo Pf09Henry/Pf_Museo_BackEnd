@@ -6,7 +6,7 @@ const {uploadImage} = require("../../Utils/Cloudinary");
 
 router.put("/put/:id", async (req, res, next) => {
   try {
-    
+  /*   
     var ExpRegSoloNumeros = "^[0-9]+$";
     var emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
@@ -29,7 +29,7 @@ router.put("/put/:id", async (req, res, next) => {
 
     if (!req.body.phone || String(req.body.phone).match(phoneRegex) === null){
         res.status(404).send("El telefono es requerido y debe tener 10 digitos");
-    }
+    } */
 
     const user = await User.findByPk(req.params.id);
 
