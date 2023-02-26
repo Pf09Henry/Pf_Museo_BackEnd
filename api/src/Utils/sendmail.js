@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer")
-const { Event } = require("../db");
+// const { Event } = require("../db");
 
 
-function sendMail({ mail, subject, message, ticket }) {
+function sendMail({ mail, subject, message, ticket, event }) {
   // console.log(mail, subject, message, ticket);
   const config = {
     host: "smtp.gmail.com",
@@ -12,18 +12,29 @@ function sendMail({ mail, subject, message, ticket }) {
       pass: "yvsbutzpqcuaslwe",
     },
   };
-  console.log(ticket);
-  const event = Event.findOne({
-    where: {
-      id: ticket.event,
-      status: true
-    }
+  // var name = '';
+  // const traerEventos = async() => {
+  //   const event = await Event.findOne({
+  //     where: {
+  //       id: ticket.eventId,
+  //       status: true
+  //     }
+  //   })    
+  //   return name = event.dataValues.name;
+  // }
 
-  })
-  console.log(event);
   let mail_config = {}
   if (ticket != undefined) {
     
+    // traerEventos().then((valor) => {
+    //   // const name = JSON.parse(JSON.stringify(valor.dataValues.name))
+    //   name = valor
+    //   // console.log(valor)
+    // });
+
+    // console.log(traerEventos().then(valor => {
+    //   return valor
+    // }))
     mail_config = {
       from: "pf09henry@gmail.com",
       to: `${mail}`,
@@ -48,11 +59,15 @@ function sendMail({ mail, subject, message, ticket }) {
               Cantidad: ${ticket.amount}
               </h1>
               <h1 style="font-size: 30px; color: rgb(214, 214, 241); text-align: center">
+              Nombre Evento: ${event}
+              </h1>
+              <h1 style="font-size: 30px; color: rgb(214, 214, 241); text-align: center">
                 Total: ${ticket.totalOfPurchase}
               </h1>
             </div>`,
     }
   } else {
+    
     mail_config = {
       from: "pf09henry@gmail.com",
       to: `${mail}`,
