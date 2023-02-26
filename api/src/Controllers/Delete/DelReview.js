@@ -5,7 +5,8 @@ const router = Router();
 router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
-        const review = await Review.findByPk({ id });
+        
+        const review = await Review.findByPk(id);
         if (!review) {
             res.status(404).send("No se encontro el Comentario");
         } else {
@@ -13,6 +14,7 @@ router.delete("/delete/:id", async (req, res, next) => {
                 status: false
             });
         }
+        res.status(200).send(`Review eliminado ${JSON.stringify(review)}`);
     } catch (err) {
         next(err)
         res.status(500).send(err);
