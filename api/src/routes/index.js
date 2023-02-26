@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 //Get
 const getAllUsers = require("../Controllers/Get/getUser")
+const getAllTruAndFalseUsers = require("../Controllers/Get/getAllUser")
 const getAllEvent = require("../Controllers/Get/getEvent")
 const getAllGuides = require("../Controllers/Get/getGuide")
 const getAllCategory= require("../Controllers/Get/getCategory")
@@ -63,6 +64,7 @@ const router = Router();
 
 //Get All
 router.use("/users", getAllUsers)
+router.use("/allusers", getAllTruAndFalseUsers)
 router.use("/events", getAllEvent)
 router.use("/guides", getAllGuides)
 router.use("/category", getAllCategory)
