@@ -26,7 +26,7 @@ module.exports = (sequelize) =>{
         },
         statusOfPurchase: {
             type: DataTypes.ENUM('aprobado', 'pendiente', 'rechazado', 'cancelado'),
-            defaultValue: 'pendiente'
+            defaultValue: 'aprobado'
         }
 
     })
