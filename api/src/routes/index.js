@@ -44,7 +44,7 @@ const delUser = require("../Controllers/Delete/DelUser")
 const delEvent = require("../Controllers/Delete/DelEvent")
 const delGuide = require("../Controllers/Delete/DelGuide")
 const delTicket = require("../Controllers/Delete/DelTicket")
-
+const delReview = require("../Controllers/Delete/DelReview")
 //Put
 const putGuide = require("../Controllers/Put/PutGuide")
 const putUser = require("../Controllers/Put/PutUser")
@@ -107,7 +107,7 @@ router.use("/users", delUser)
 router.use("/events", delEvent)
 router.use("/guides", delGuide)
 router.use("/ticket", delTicket)
-
+router.use("/review", delReview)
 
 //Put
 router.use("/guides", putGuide)
