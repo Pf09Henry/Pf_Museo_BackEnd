@@ -23,12 +23,12 @@ router.post("/post", async (req, res, next) => {
         const result = await uploadImage(req.body.image)
         const image = result
         const newUser = await User.create({ name, image, email, password, phone, status, roleId })
-        let datos = {
-            mail: email,
-            subject: 'Cuenta Registrada',
-            message: 'Te has registrado exitosamente en el Museo'
-        }
-        sendMail(datos)
+        // let datos = {
+        //     mail: email,
+        //     subject: 'Cuenta Registrada',
+        //     message: 'Te has registrado exitosamente en el Museo'
+        // }
+        // sendMail(datos)
         res.status(200).send(newUser)
     } catch (error) {
         next(error)
