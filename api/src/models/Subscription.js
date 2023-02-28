@@ -11,6 +11,13 @@ module.exports = (sequelize) =>{
         email:{
             type: DataTypes.STRING,
             allowNull: true
+        },
+        typeSubscription: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        detailSubscription: {
+            type: DataTypes.STRING
         }
     })
 }
