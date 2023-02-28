@@ -10,6 +10,7 @@ const getAllTicket= require("../Controllers/Get/getTicket")
 const getAllDonation = require("../Controllers/Get/getDonation")
 const getAllReview = require("../Controllers/Get/getReview")
 const getAllSubscription = require("../Controllers/Get/getSubscription")
+const getAllComprobanteSubscription = require("../Controllers/Get/getComprobanteSubscription")
 const getAllRole = require("../Controllers/Get/getRole")
 
 //Get By Id
@@ -30,6 +31,7 @@ const getUserByName = require("../Controllers/Get/getUserByName")
 //Post
 const postUser = require("../Controllers/Post/PostUser")
 const postSubscription = require("../Controllers/Post/PostSubscription")
+const postComprobanteSubscription = require("../Controllers/Post/PostComprobanteSubscription")
 const postEvent = require("../Controllers/Post/PostEvent")
 const postGuide = require("../Controllers/Post/PostGuide")
 const postTicket = require("../Controllers/Post/PostTicket")
@@ -72,6 +74,7 @@ router.use("/ticket", getAllTicket)
 router.use("/donations", getAllDonation)
 router.use("/reviews", getAllReview)
 router.use("/subscription", getAllSubscription)
+router.use("/comprobantesubscription", getAllComprobanteSubscription)
 router.use("/role", getAllRole)
 
 
@@ -94,6 +97,8 @@ router.use("/username", getUserByName)
 //Post
 router.use("/users", postUser)
 router.use("/subscription", postSubscription)
+router.use("/comprobantesubscription", postComprobanteSubscription)
+
 router.use("/event", postEvent)
 router.use("/guide", postGuide)
 router.use("/ticket", postTicket)

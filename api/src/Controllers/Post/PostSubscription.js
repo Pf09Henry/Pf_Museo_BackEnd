@@ -5,8 +5,8 @@ const router = Router();
 
 router.post("/post", async (req, res, next)=>{
     try {
-        const {email} = req.body
-        const newSubscription = await Subscription.create({email})
+        const {email, typeSubscription, detailSubscription} = req.body
+        const newSubscription = await Subscription.create({email, typeSubscription, detailSubscription})
         await User.update(
             {
                 subscriptionId: newSubscription.id,
@@ -21,9 +21,5 @@ router.post("/post", async (req, res, next)=>{
         res.status(404).json(error)
     }
 })
-
-
-module.exports = router;
-
 module.exports = router
 
