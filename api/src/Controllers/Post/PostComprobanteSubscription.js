@@ -6,8 +6,8 @@ const router = Router();
 router.post("/post", async (req, res, next)=>{
     try {
         const {totalOfPurchase, methodOfPurchase, userId, subscriptionId} = req.body
-        let status = true
-        const newComprobante = await Comprobante.create({totalOfPurchase, methodOfPurchase, userId, subscriptionId, status})
+       
+        const newComprobante = await Comprobante.create({totalOfPurchase, methodOfPurchase, userId, subscriptionId})
         
         res.status(200).send(newComprobante)
     } catch (error) {
