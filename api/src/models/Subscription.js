@@ -18,6 +18,10 @@ module.exports = (sequelize) =>{
         },
         detailSubscription: {
             type: DataTypes.STRING
-        }
+        },
+        status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false        
+        },
     })
 }
