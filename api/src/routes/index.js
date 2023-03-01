@@ -53,6 +53,7 @@ const putGuide = require("../Controllers/Put/PutGuide")
 const putUser = require("../Controllers/Put/PutUser")
 const putEvent = require("../Controllers/Put/PutEvent")
 const putTicket = require("../Controllers/Put/PutTicket")
+const putSubscription = require("../Controllers/Put/PutSubscription")
 
 //PayPal
 // const PaypalCreate = require("../Controllers/PayPal/PaypalCreate")
@@ -121,6 +122,7 @@ router.use("/guides", putGuide)
 router.use("/users", putUser)
 router.use("/events", putEvent)
 router.use("/tickets", putTicket)
+router.use("/subscription", putSubscription)
 
 //PayPal
 // router.use("/paypal", PaypalCreate)
