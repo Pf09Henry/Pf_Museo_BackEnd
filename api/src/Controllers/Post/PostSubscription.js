@@ -5,9 +5,9 @@ const router = Router();
 
 router.post("/post", async (req, res, next)=>{
     try {
-        const {email, typeSubscription, detailSubscription} = req.body
+        const {email, typeSubscription, detailSubscription, cupo} = req.body
         let status = true
-        const newSubscription = await Subscription.create({email, typeSubscription, detailSubscription, status})
+        const newSubscription = await Subscription.create({email, typeSubscription, detailSubscription, status,cupo})
         await User.update(
             {
                 subscriptionId: newSubscription.id,

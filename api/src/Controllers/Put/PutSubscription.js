@@ -8,7 +8,8 @@ router.put("/put/:id", async (req, res, next) => {
         const subscription = await Subscription.findByPk(req.params.id);
         if (subscription) {
             await subscription.update({
-                status: req.body.status
+                status: req.body.status,
+                cupo: req.body.cupo
             });
 
             res.status(200).send(`Subscripcion actualizado ${JSON.stringify(subscription)}`);
