@@ -6,10 +6,9 @@ router.put("/put/:id", async (req, res, next) => {
     try {
 
         const subscription = await Subscription.findByPk(req.params.id);
-
         if (subscription) {
-            await Subscription.update({
-                status: req.body.status,
+            await subscription.update({
+                status: req.body.status
             });
 
             res.status(200).send(`Subscripcion actualizado ${JSON.stringify(subscription)}`);
