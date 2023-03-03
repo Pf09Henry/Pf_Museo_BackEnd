@@ -8,7 +8,7 @@ function sendMail({ mail, subject, message, ticket, event }) {
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-      user: "pf09henry@gmail.com",fpqpcsrdbxrsocna
+      user: "pf09henry@gmail.com",
       pass: "fpqpcsrdbxrsocna",
     },
   };
