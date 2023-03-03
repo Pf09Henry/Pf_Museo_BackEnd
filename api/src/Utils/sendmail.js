@@ -9,7 +9,7 @@ function sendMail({ mail, subject, message, ticket, event }) {
     port: 587,
     auth: {
       user: "pf09henry@gmail.com",
-      pass: "iatkblhwxqsfqbat",
+      pass: "yvsbutzpqcuaslwe",
     },
   };
   // var name = '';
