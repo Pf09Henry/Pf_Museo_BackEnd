@@ -8,8 +8,8 @@ function sendMail({ mail, subject, message, ticket, event }) {
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-      user: "pf09henry@gmail.com",
-      pass: "fpqpcsrdbxrsocna",
+      user: "MuseoPatagonicoCNjuanCaSal2023@gmail.com",
+      pass: "pudeghsztainfukz",
     },
   };
   // var name = '';yvsbutzpqcuaslwe
@@ -36,7 +36,7 @@ function sendMail({ mail, subject, message, ticket, event }) {
     //   return valor
     // }))
     mail_config = {
-      from: "pf09henry@gmail.com",
+      from: "museopatagonicocnjuancacal2023@gmail.com",
       to: `${mail}`,
       subject: `${subject}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
