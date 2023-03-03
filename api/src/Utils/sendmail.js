@@ -8,11 +8,11 @@ function sendMail({ mail, subject, message, ticket, event }) {
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-      user: "pf09henry@gmail.com",
-      pass: "yvsbutzpqcuaslwe",
+      user: "pf09henry@gmail.com",fpqpcsrdbxrsocna
+      pass: "fpqpcsrdbxrsocna",
     },
   };
-  // var name = '';
+  // var name = '';yvsbutzpqcuaslwe
   // const traerEventos = async() => {
   //   const event = await Event.findOne({
   //     where: {
